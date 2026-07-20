@@ -560,7 +560,8 @@
             display: flex;
             justify-content: center;
             gap: 12px;
-            margin: 25px 0 10px;
+            margin-top: 0px;
+            margin-bottom: 200px;
             flex-wrap: wrap;
         }
 
@@ -571,7 +572,7 @@
             background: #fff;
             color: #8c855b;
             font-family: 'Cinzel', serif;
-            font-size: 0.75rem;
+            font-size: 1rem;
             letter-spacing: 1px;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -678,7 +679,7 @@
             color: #fff;
             padding: 12px 18px;
             border-radius: 999px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
             z-index: 3000;
             opacity: 0;
             pointer-events: none;
@@ -706,14 +707,33 @@
             transform: translateY(0);
         }
 
-        .delay-1 { transition-delay: 0.15s; }
-        .delay-2 { transition-delay: 0.3s; }
-        .delay-3 { transition-delay: 0.45s; }
-        .delay-4 { transition-delay: 0.6s; }
+        .delay-1 {
+            transition-delay: 0.15s;
+        }
 
-        .hero-delay-1 { transition-delay: 0.25s; }
-        .hero-delay-2 { transition-delay: 0.5s; }
-        .hero-delay-3 { transition-delay: 0.75s; }
+        .delay-2 {
+            transition-delay: 0.3s;
+        }
+
+        .delay-3 {
+            transition-delay: 0.45s;
+        }
+
+        .delay-4 {
+            transition-delay: 0.6s;
+        }
+
+        .hero-delay-1 {
+            transition-delay: 0.25s;
+        }
+
+        .hero-delay-2 {
+            transition-delay: 0.5s;
+        }
+
+        .hero-delay-3 {
+            transition-delay: 0.75s;
+        }
     </style>
 </head>
 
@@ -788,11 +808,6 @@
                 Izzah Farhana Binti Mohammad Redzuan<br>
                 &<br>
                 Zarif Fathurrahman Bin Che Abd Rani
-            </div>
-
-            <div class="action-buttons reveal">
-                <button class="action-btn" onclick="openModal('rsvpModal')">RSVP</button>
-                <button class="action-btn" onclick="openModal('ucapanModal')">Ucapan</button>
             </div>
 
             <div style="margin-top: 30px;" class="reveal">
@@ -922,6 +937,10 @@
 
         </section>
 
+        <div class="action-buttons reveal">
+            <button class="action-btn" onclick="openModal('rsvpModal')">RSVP</button>
+            <button class="action-btn" onclick="openModal('ucapanModal')">Ucapan</button>
+        </div>
     </div>
 
     <div class="modal-overlay" id="rsvpModal">
