@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="ms">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WALIMATULURUS IZZAH & ZARIF</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&family=Amiri:wght@400;700&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* RESET & BASE STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #e5e5e5;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .reveal-item {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            will-change: opacity, transform;
+        }
+
+        .reveal-item.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* CONTAINER CARD (MOBILE VIEW) */
+        .card-container {
+            width: 100%;
+            max-width: 430px;
+            height: 100vh;
+            /* Standard Phone Screen Width */
+            background-color: #faf9f6;
+            background-image: radial-gradient(#d3c5ad 0.5px, transparent 0.5px);
+            background-size: 15px 15px;
+            /* Linen Texture Feel */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            overflow-y: auto;
+            overflow-x: hidden;
+            position: relative;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .card-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .section {
+            padding: 40px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        /* SECTION 1: HERO ARCH COVER */
+        .hero-section {
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)),
+                url('bg.png') no-repeat center center;
+            background-size: cover;
+            position: relative;
+            padding-bottom: 50px;
+        }
+
+        /* Arch Overlay Border Simulation */
+        .arch-frame {
+            position: absolute;
+            top: 20px;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            border-top-left-radius: 200px;
+            border-top-right-radius: 200px;
+            pointer-events: none;
+            box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.5);
+        }
+
+        .monogram {
+            font-family: 'Cinzel', serif;
+            font-size: 8rem;
+            margin-top: 0;
+            letter-spacing: -5px;
+            color: #1a1a1a;
+            position: relative;
+            line-height: 0.8;
+            text-align: center;
+            padding-top: 250px;
+        }
+
+        .monogram span {
+            font-family: 'Alex Brush', cursive;
+            font-size: 3rem;
+            margin: 0 -15px;
+        }
+
+        .tagline {
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #333;
+            margin-top: 80px;
+            font-weight: 500;
+        }
+
+        .couple-names-hero {
+            font-family: 'Alex Brush', cursive;
+            font-size: 3.5rem;
+            color: #1a1a1a;
+            margin: 15px 0;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+        }
+
+        .date-hero {
+            font-size: 0.9rem;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .hijri-hero {
+            font-size: 0.8rem;
+            font-style: italic;
+            color: #666;
+            margin-top: 4px;
+        }
+
+        /* SECTION 2: MAJLIS & IBU BAPA */
+        .bismillah {
+            font-family: 'Amiri', serif;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #2c2c2c;
+        }
+
+        .intro-text {
+            font-size: 0.8rem;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .parent-name {
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #8c855b;
+            /* Muted Gold / Olive */
+            text-transform: capitalize;
+        }
+
+        .parent-role {
+            font-size: 0.75rem;
+            font-style: italic;
+            color: #888;
+            margin-bottom: 15px;
+        }
+
+        .together-text {
+            font-size: 0.8rem;
+            color: #555;
+            margin: 15px 0;
+        }
+
+        .invitation-body {
+            font-size: 0.8rem;
+            line-height: 1.6;
+            color: #444;
+            margin: 25px 0;
+        }
+
+        .bride-groom-names {
+            font-family: 'Cinzel', serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #8c855b;
+            line-height: 1.8;
+        }
+
+        /* SECTION 3: TIME, LOCATION & SURAH */
+        .icon-header {
+            font-size: 1.8rem;
+            color: #8c855b;
+            margin-bottom: 10px;
+        }
+
+        .info-text {
+            font-size: 0.85rem;
+            color: #333;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        /* COUNTDOWN TIMER */
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            margin: 30px 0;
+        }
+
+        .time-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .time-box .number {
+            font-size: 1.2rem;
+            color: #8c855b;
+            font-family: 'Cinzel', serif;
+        }
+
+        .time-box .label {
+            font-size: 0.65rem;
+            color: #777;
+        }
+
+        .colon {
+            color: #8c855b;
+            font-size: 1rem;
+            margin-bottom: 12px;
+        }
+
+        /* QURAN VERSE */
+        .quran-box {
+            margin-top: 40px;
+            border-top: 1px solid #e0e0e0;
+            padding-top: 30px;
+        }
+
+        .quran-translation {
+            font-size: 0.75rem;
+            font-style: italic;
+            line-height: 1.6;
+            color: #444;
+            margin: 15px 0 10px 0;
+        }
+
+        .quran-surah {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        /* SECTION 4: ATUR CARA & RSVP */
+        .section-title {
+            font-family: 'Cinzel', serif;
+            letter-spacing: 2px;
+            font-size: 1rem;
+            color: #8c855b;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .sub-date {
+            font-size: 0.75rem;
+            color: #777;
+            margin-bottom: 30px;
+        }
+
+        /* TIMELINE */
+        .timeline {
+            position: relative;
+            max-width: 300px;
+            margin: 0 auto 40px auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 10px;
+            left: 50%;
+            width: 1px;
+            background-color: #ccc;
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+        }
+
+        .timeline-item:nth-child(odd) {
+            justify-content: flex-start;
+            text-align: right;
+            padding-right: 55%;
+        }
+
+        .timeline-item:nth-child(even) {
+            justify-content: flex-end;
+            text-align: left;
+            padding-left: 55%;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 5px;
+            width: 8px;
+            height: 8px;
+            background-color: #faf9f6;
+            border: 2px solid #8c855b;
+            border-radius: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+
+        .time-title {
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #8c855b;
+        }
+
+        .time-desc {
+            font-size: 0.7rem;
+            font-style: italic;
+            color: #555;
+        }
+
+        /* RSVP BUTTON */
+        .rsvp-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 80%;
+            padding: 12px;
+            border: 1.5px solid #8c855b;
+            border-radius: 30px;
+            background: transparent;
+            color: #8c855b;
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+        }
+
+        .rsvp-btn:hover {
+            background-color: #8c855b;
+            color: #fff;
+        }
+
+        /* SECTION 5: GALLERY */
+        .gallery-container {
+            width: 100%;
+            border-radius: 12px;
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px;
+            -webkit-overflow-scrolling: touch;
+            /* Smooth scrolling on iOS */
+            -ms-overflow-style: none;
+            /* Hide scrollbar Edge/IE */
+            scrollbar-width: none;
+            /* Hide scrollbar Firefox */
+        }
+
+        .gallery-container::-webkit-scrollbar {
+            display: none;
+            /* Hide scrollbar Chrome/Safari */
+        }
+
+        .gallery-container img {
+            width: 100%;
+            min-width: 100%;
+            height: 280px;
+            object-fit: cover;
+            display: block;
+            border-radius: 12px;
+            scroll-snap-align: start;
+            flex-shrink: 0;
+        }
+
+        .dots {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            margin-bottom: 30px;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            background-color: #ccc;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            width: 20px;
+            background-color: #333;
+            border-radius: 10px;
+        }
+
+        .dots {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            margin-bottom: 30px;
+        }
+
+        .dot {
+            width: 6px;
+            height: 6px;
+            background-color: #ccc;
+            border-radius: 50%;
+        }
+
+        .dot.active {
+            width: 20px;
+            background-color: #333;
+            border-radius: 10px;
+        }
+
+        /* FLOATING ACTION BUTTONS */
+        .floating-controls {
+            position: fixed;
+            bottom: 20px;
+            right: calc(50% - 200px + 10px);
+            /* Aligns to mobile container right side */
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 99;
+        }
+
+        @media (max-width: 430px) {
+            .floating-controls {
+                right: 15px;
+            }
+        }
+
+        .float-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.9);
+            border: 1px solid #ccc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+            color: #333;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card-container">
+
+        <!-- FLOATING BUTTONS (MUSIC & CLICK ICON) -->
+        <div class="floating-controls">
+            <!-- <button class="float-btn" onclick="alert('Sentuh untuk interaksi!')">
+                <i class="fa-regular fa-hand-pointer"></i>
+            </button> -->
+            <button class="float-btn" id="musicToggle">
+                <i class="fa-solid fa-music"></i>
+            </button>
+        </div>
+
+        <!-- AUDIO PLAYER (HIDDEN) -->
+        <audio id="bgMusic" loop autoplay preload="auto">
+            <source src="PAYUNG TEDUH.wav" type="audio/wav">
+        </audio>
+
+        <!-- SECTION 1: HERO IMAGE ARCH COVER -->
+        <section class="section hero-section">
+            <div class="arch-frame"></div>
+
+            <div class="monogram reveal-item">
+                I<span>&</span>Z
+            </div>
+
+            <div>
+                <div class="tagline reveal-item">Satu Akad, Seumur Hidup</div>
+                <div class="couple-names-hero reveal-item">Izzah & Zarif</div>
+                <div class="date-hero reveal-item">Sabtu, 19 Sep 2026</div>
+                <div class="hijri-hero reveal-item">7 Rabiulakhir 1448</div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: INVITATION DETAILS -->
+        <section class="section">
+            <div class="bismillah">بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+
+            <p class="intro-text">Dengan penuh kesyukuran, kami</p>
+
+            <div class="parent-name">Mohammad Redzuan Bin Othman</div>
+            <div class="parent-role">Ayah Pengantin Perempuan</div>
+
+            <p class="together-text">bersama</p>
+
+            <div class="parent-name">Suraiya Binti Abdul Wahab</div>
+            <div class="parent-role">Ibu Pengantin Perempuan</div>
+
+            <p class="invitation-body">
+                Menjemput Yang Berbahagia Tan Sri/ Puan Sri/ Dato' Seri/<br>
+                Datin Seri/ Dato'/ Datin/ Prof/ Tuan/ Puan/ Encik/ Cik<br>
+                suami/ isteri/ pasangan serta keluarga untuk meraikan majlis<br>
+                perkahwinan anakanda kami
+            </p>
+
+            <div class="bride-groom-names">
+                Izzah Farhana Binti Mohammad Redzuan<br>
+                &<br>
+                Zarif Fathurrahman Bin Che Abd Rani
+            </div>
+
+            <div style="margin-top: 30px;">
+                <i class="fa-regular fa-calendar-check icon-header" style="font-size: 1.5rem;"></i>
+                <div class="date-hero" style="font-size: 0.85rem;">Sabtu, 19 September 2026</div>
+                <div class="hijri-hero">7 Rabiulakhir 1448</div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: TIME, VENUE & COUNTDOWN -->
+        <section class="section" style="padding-top: 0;">
+            <!-- TIME -->
+            <i class="fa-regular fa-clock icon-header"></i>
+            <div class="info-text">11:30 pagi – 4:00 petang</div>
+
+            <!-- VENUE -->
+            <i class="fa-solid fa-house-chimney icon-header"></i>
+            <div class="info-text">
+                <strong>Bangi Convention Centre</strong><br>
+                Jalan Wawasan 1, Seksyen 14, 43650 Bandar Baru Bangi,<br>
+                Selangor
+            </div>
+
+            <!-- COUNTDOWN TIMER -->
+            <div class="countdown-container" id="countdown">
+                <div class="time-box">
+                    <span class="number" id="days">00</span>
+                    <span class="label">Hari</span>
+                </div>
+                <span class="colon">:</span>
+                <div class="time-box">
+                    <span class="number" id="hours">00</span>
+                    <span class="label">Jam</span>
+                </div>
+                <span class="colon">:</span>
+                <div class="time-box">
+                    <span class="number" id="minutes">00</span>
+                    <span class="label">Minit</span>
+                </div>
+                <span class="colon">:</span>
+                <div class="time-box">
+                    <span class="number" id="seconds">00</span>
+                    <span class="label">Saat</span>
+                </div>
+            </div>
+
+            <!-- QURAN VERSE -->
+            <div class="quran-box">
+                <div class="bismillah" style="font-size: 1.4rem; margin-bottom: 10px;">رَبَّنَا هَبْ لَنَا مِنْ
+                    أَزْوَاجِنَا وَذُرِّيَّاتِنَا قُرَّةَ أَعْيُنٍ وَاجْعَلْنَا لِلْمُتَّقِينَ إِمَامًا</div>
+                <p class="quran-translation">
+                    "Ya Tuhan kami, anugrahkanlah kepada kami isteri-isteri kami dan keturunan kami sebagai penyenang
+                    hati (kami), dan jadikanlah kami imam bagi orang-orang yang bertakwa."
+                </p>
+                <div class="quran-surah">Surah Al-Furqan: 74</div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: TIMELINE & RSVP -->
+        <section class="section">
+            <div class="section-title">Atur Cara</div>
+            <div class="sub-date">Sabtu, 19 September 2026</div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div>
+                        <div class="time-title">11:30 pagi</div>
+                        <div class="time-desc">- Ketibaan Tetamu</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div>
+                        <div class="time-title">12:30 tengah hari</div>
+                        <div class="time-desc">Ketibaan Pengantin -</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div>
+                        <div class="time-title">1:30 tengah hari</div>
+                        <div class="time-desc">- Upacara Pemotongan Kek</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div>
+                        <div class="time-title">2:00 petang</div>
+                        <div class="time-desc">Sesi Bergambar -</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div>
+                        <div class="time-title">4:00 petang</div>
+                        <div class="time-desc">- Majlis Bersurai</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RSVP SECTION -->
+            <!-- <div style="margin-top: 40px;">
+                <div class="section-title" style="font-size: 0.9rem;">Maklumat Kehadiran</div>
+                <p class="intro-text" style="font-size: 0.75rem; padding: 0 10px;">
+                    Sila maklumkan kehadiran yang telah ditetapkan melalui butang RSVP dibawah sebelum 01 September 2026.
+                </p>
+                <a href="#rsvp" class="rsvp-btn">
+                    <i class="fa-regular fa-envelope"></i> RSVP
+                </a>
+            </div> -->
+        </section>
+
+        <!-- SECTION 5: GALLERY & GUESTBOOK -->
+        <section class="section" style="padding-top: 0;">
+            <div class="gallery-container" id="galleryContainer">
+                <!-- Add your images here -->
+                <img src="A1.webp"
+                    alt="Gambar 1">
+                <img src="A2.webp"
+                    alt="Gambar 2">
+                <img src="A3.webp"
+                    alt="Gambar 3">
+                <img src="A4.webp"
+                    alt="Gambar 4">
+            </div>
+
+            <!-- Clickable Dots -->
+            <div class="dots" id="galleryDots">
+                <div class="dot active" onclick="goToSlide(0)"></div>
+                <div class="dot" onclick="goToSlide(1)"></div>
+                <div class="dot" onclick="goToSlide(2)"></div>
+                <div class="dot" onclick="goToSlide(3)"></div>
+            </div>
+
+        </section>
+
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // 1. COUNTDOWN TIMER LOGIC (Target: 19 September 2026, 11:30 AM)
+        const targetDate = new Date("September 19, 2026 11:30:00").getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            if (difference > 0) {
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                document.getElementById("days").innerText = days.toString().padStart(2, '0');
+                document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+                document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
+                document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
+            } else {
+                document.getElementById("countdown").innerHTML = "<b>Majlis Telah Berlangsung</b>";
+            }
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // 2. TEXT REVEAL ANIMATIONS ON SCROLL
+        function setupRevealAnimations() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.15
+            });
+
+            document.querySelectorAll('.section, .bismillah, .intro-text, .parent-name, .parent-role, .together-text, .invitation-body, .bride-groom-names, .icon-header, .info-text, .countdown-container, .quran-box, .quran-translation, .quran-surah, .section-title, .sub-date, .timeline-item, .time-title, .time-desc, .gallery-container, .dots, .monogram, .tagline, .couple-names-hero, .date-hero, .hijri-hero').forEach((element, index) => {
+                element.classList.add('reveal-item');
+                element.style.transitionDelay = `${Math.min(index * 0.05, 0.6)}s`;
+                observer.observe(element);
+            });
+        }
+
+        // 3. AUDIO PLAYER TOGGLE
+        const musicToggleBtn = document.getElementById("musicToggle");
+        const bgMusic = document.getElementById("bgMusic");
+        let isPlaying = false;
+
+        // Function to handle playing audio
+        function playAudio() {
+            bgMusic.play().then(() => {
+                isPlaying = true;
+                if (musicToggleBtn) musicToggleBtn.style.opacity = "1.0";
+            }).catch(error => {
+                console.log("Autoplay blocked by browser. Trying again after a short delay.");
+                isPlaying = false;
+                if (musicToggleBtn) musicToggleBtn.style.opacity = "0.6";
+                setTimeout(playAudio, 500);
+            });
+        }
+
+        // Try autoplay on page load
+        window.addEventListener("DOMContentLoaded", () => {
+            playAudio();
+            setupRevealAnimations();
+        });
+
+        // Keep the page responsive if the browser later allows playback
+        document.addEventListener("click", () => {
+            if (!isPlaying) {
+                playAudio();
+            }
+        });
+        document.addEventListener("touchstart", () => {
+            if (!isPlaying) {
+                playAudio();
+            }
+        });
+        document.addEventListener("scroll", () => {
+            if (!isPlaying) {
+                playAudio();
+            }
+        });
+
+        // Floating Music Button Toggle Switch
+        if (musicToggleBtn) {
+            musicToggleBtn.addEventListener("click", (e) => {
+                e.stopPropagation(); // Prevents triggering global click listener
+                if (isPlaying) {
+                    bgMusic.pause();
+                    musicToggleBtn.style.opacity = "0.6";
+                    isPlaying = false;
+                } else {
+                    playAudio();
+                }
+            });
+        }
+
+        // 4. GALLERY SLIDER LOGIC
+        // GALLERY SLIDE LOGIC
+        const gallery = document.getElementById("galleryContainer");
+        const dots = document.querySelectorAll("#galleryDots .dot");
+        let currentSlide = 0;
+
+        // Update active dot indicator on scroll/swipe
+        function updateDots() {
+            const slideWidth = gallery.clientWidth;
+            const activeIndex = Math.round(gallery.scrollLeft / slideWidth);
+            dots.forEach((dot, index) => {
+                dot.classList.toggle("active", index === activeIndex);
+            });
+        }
+
+        // Jump to specific slide when clicking a dot
+        function goToSlide(index) {
+            currentSlide = index;
+            gallery.scrollTo({
+                left: index * gallery.clientWidth,
+                behavior: 'smooth'
+            });
+        }
+
+        // Sync dots when user manually swipes
+        gallery.addEventListener("scroll", updateDots);
+
+        // Auto slide every 3.5 seconds
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % dots.length;
+            goToSlide(currentSlide);
+        }, 3500);
+
+
+
+    </script>
+</body>
+
+</html>
