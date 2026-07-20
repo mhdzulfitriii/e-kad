@@ -241,12 +241,18 @@
         }
 
         .tagline {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             letter-spacing: 2px;
             text-transform: uppercase;
-            color: #333;
+            color: #1f1f1f;
             margin-top: 80px;
-            font-weight: 500;
+            font-weight: 700;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+            padding: 7px 12px;
+            border: 1px solid rgba(140, 133, 91, 0.35);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(3px);
         }
 
         .couple-names-hero {
@@ -550,6 +556,141 @@
             font-size: 0.85rem;
         }
 
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin: 25px 0 10px;
+            flex-wrap: wrap;
+        }
+
+        .action-btn {
+            padding: 10px 16px;
+            border: 1px solid #8c855b;
+            border-radius: 25px;
+            background: #fff;
+            color: #8c855b;
+            font-family: 'Cinzel', serif;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .action-btn:hover {
+            background: #8c855b;
+            color: #fff;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.55);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            padding: 20px;
+        }
+
+        .modal-overlay.show {
+            display: flex;
+        }
+
+        .modal-box {
+            width: 100%;
+            max-width: 360px;
+            background: #faf9f6;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            border: none;
+            background: transparent;
+            font-size: 1.1rem;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .modal-title {
+            font-family: 'Cinzel', serif;
+            font-size: 0.95rem;
+            color: #8c855b;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 12px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.75rem;
+            margin-bottom: 6px;
+            color: #555;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            border: 1px solid #d8d0bf;
+            border-radius: 8px;
+            padding: 10px 12px;
+            font-size: 0.85rem;
+            font-family: 'Montserrat', sans-serif;
+            background: #fff;
+        }
+
+        .form-group textarea {
+            min-height: 90px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            margin-top: 8px;
+            padding: 10px 14px;
+            border: none;
+            border-radius: 25px;
+            background: #8c855b;
+            color: #fff;
+            font-family: 'Cinzel', serif;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+        }
+
+        .success-toast {
+            position: fixed;
+            left: 50%;
+            bottom: 24px;
+            transform: translateX(-50%) translateY(20px);
+            background: #2f5d3a;
+            color: #fff;
+            padding: 12px 18px;
+            border-radius: 999px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            z-index: 3000;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+        }
+
+        .success-toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
         /* ANIMATION CLASSES */
         .reveal,
         .hero-animate {
@@ -647,6 +788,11 @@
                 Izzah Farhana Binti Mohammad Redzuan<br>
                 &<br>
                 Zarif Fathurrahman Bin Che Abd Rani
+            </div>
+
+            <div class="action-buttons reveal">
+                <button class="action-btn" onclick="openModal('rsvpModal')">RSVP</button>
+                <button class="action-btn" onclick="openModal('ucapanModal')">Ucapan</button>
             </div>
 
             <div style="margin-top: 30px;" class="reveal">
@@ -778,8 +924,132 @@
 
     </div>
 
+    <div class="modal-overlay" id="rsvpModal">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal('rsvpModal')">×</button>
+            <div class="modal-title">RSVP</div>
+            <form id="rsvpForm">
+                <div class="form-group">
+                    <label for="rsvpName">Nama</label>
+                    <input id="rsvpName" name="name" type="text" placeholder="Masukkan nama" required>
+                </div>
+                <div class="form-group">
+                    <label for="adultPax">Adult Pax</label>
+                    <input id="adultPax" name="adult_pax" type="number" min="0" placeholder="0" value="0">
+                </div>
+                <div class="form-group">
+                    <label for="childPax">Child Pax</label>
+                    <input id="childPax" name="child_pax" type="number" min="0" placeholder="0" value="0">
+                </div>
+                <button class="submit-btn" type="submit">Hantar</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="ucapanModal">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal('ucapanModal')">×</button>
+            <div class="modal-title">Ucapan</div>
+            <form id="ucapanForm">
+                <div class="form-group">
+                    <label for="ucapanName">Nama</label>
+                    <input id="ucapanName" name="name" type="text" placeholder="Masukkan nama" required>
+                </div>
+                <div class="form-group">
+                    <label for="ucapanText">Ucapan</label>
+                    <textarea id="ucapanText" name="message" placeholder="Tulis ucapan anda" required></textarea>
+                </div>
+                <button class="submit-btn" type="submit">Hantar</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="success-toast" id="successToast"></div>
+
     <!-- JAVASCRIPT LOGIC -->
     <script>
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('show');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('show');
+        }
+
+        const API_BASE_URL = 'https://rsvp.mypkpim.org/api';
+        const API_KEY = '1|ScHaBAUHhLLZduQ7okUOvS516rbWjegxZc5BnCujec0160a1';
+
+        document.querySelectorAll('.modal-overlay').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('show');
+                }
+            });
+        });
+
+        function showSuccessToast(message) {
+            const toast = document.getElementById('successToast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            clearTimeout(showSuccessToast.timeout);
+            showSuccessToast.timeout = setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2500);
+        }
+
+        async function submitForm(url, payload) {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${API_KEY}`
+                },
+                body: JSON.stringify(payload)
+            });
+
+            const data = await response.json().catch(() => ({}));
+            if (!response.ok) {
+                throw new Error(data.message || 'Failed to submit');
+            }
+
+            return data;
+        }
+
+        document.getElementById('rsvpForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const payload = {
+                name: document.getElementById('rsvpName').value.trim(),
+                adult_pax: Number(document.getElementById('adultPax').value || 0),
+                child_pax: Number(document.getElementById('childPax').value || 0)
+            };
+
+            try {
+                await submitForm(`${API_BASE_URL}/reservation`, payload);
+                closeModal('rsvpModal');
+                e.target.reset();
+                showSuccessToast('RSVP berjaya dihantar.');
+            } catch (error) {
+                alert(error.message || 'RSVP gagal dihantar.');
+            }
+        });
+
+        document.getElementById('ucapanForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const payload = {
+                name: document.getElementById('ucapanName').value.trim(),
+                message: document.getElementById('ucapanText').value.trim()
+            };
+
+            try {
+                await submitForm(`${API_BASE_URL}/message`, payload);
+                closeModal('ucapanModal');
+                e.target.reset();
+                showSuccessToast('Ucapan berjaya dihantar.');
+            } catch (error) {
+                alert(error.message || 'Ucapan gagal dihantar.');
+            }
+        });
+
         // OPEN DOOR FUNCTIONALITY
         function openCard() {
             const doorWrapper = document.getElementById("doorWrapper");
