@@ -24,8 +24,8 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: #e5e5e5;
-            color: #333;
+            background-color: #d9d2c4;
+            color: #222;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -46,8 +46,8 @@
             height: 100vh;
             max-height: 932px;
             /* Standard Phone Screen Height */
-            background-color: #faf9f6;
-            background-image: radial-gradient(#d3c5ad 0.5px, transparent 0.5px);
+            background-color: #f8f3ea;
+            background-image: radial-gradient(#d8c8a9 0.6px, transparent 0.6px);
             background-size: 15px 15px;
             /* Linen Texture Feel */
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
@@ -88,8 +88,8 @@
         .door {
             width: 50%;
             height: 100%;
-            background-color: #f4efe6;
-            background-image: radial-gradient(#c7b299 0.5px, transparent 0.5px);
+            background-color: #efe5d6;
+            background-image: radial-gradient(#c8aa72 0.6px, transparent 0.6px);
             background-size: 12px 12px;
             display: flex;
             flex-direction: column;
@@ -152,7 +152,7 @@
             font-family: 'Cinzel', serif;
             font-size: 0.85rem;
             letter-spacing: 3px;
-            color: #8c855b;
+            color: #6f6642;
             text-transform: uppercase;
             margin-bottom: 10px;
         }
@@ -201,7 +201,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)),
+            background: linear-gradient(rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.22)),
                 url('bg.png') no-repeat center center;
             background-size: cover;
             position: relative;
@@ -232,6 +232,11 @@
             line-height: 0.8;
             text-align: center;
             padding-top: 250px;
+            text-shadow: -1px -1px 0 rgba(255, 255, 255, 0.7),
+                         1px -1px 0 rgba(255, 255, 255, 0.7),
+                         -1px 1px 0 rgba(255, 255, 255, 0.7),
+                         1px 1px 0 rgba(255, 255, 255, 0.7),
+                         0 3px 8px rgba(0, 0, 0, 0.18);
         }
 
         .monogram span {
@@ -244,7 +249,7 @@
             font-size: 0.7rem;
             letter-spacing: 2px;
             text-transform: uppercase;
-            color: #1f1f1f;
+            color: #1c1c1c;
             margin-top: 80px;
             font-weight: 700;
             text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
@@ -260,19 +265,23 @@
             font-size: 3.5rem;
             color: #1a1a1a;
             margin: 15px 0;
-            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+            text-shadow: -1px -1px 0 rgba(255, 255, 255, 0.55),
+                         1px -1px 0 rgba(255, 255, 255, 0.55),
+                         -1px 1px 0 rgba(255, 255, 255, 0.55),
+                         1px 1px 0 rgba(255, 255, 255, 0.55),
+                         0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
         .date-hero {
             font-size: 0.9rem;
-            color: #333;
-            font-weight: 500;
+            color: #222;
+            font-weight: 600;
         }
 
         .hijri-hero {
             font-size: 0.8rem;
             font-style: italic;
-            color: #666;
+            color: #555;
             margin-top: 4px;
         }
 
@@ -281,12 +290,12 @@
             font-family: 'Amiri', serif;
             font-size: 1.8rem;
             margin-bottom: 20px;
-            color: #2c2c2c;
+            color: #232323;
         }
 
         .intro-text {
             font-size: 0.8rem;
-            color: #555;
+            color: #444;
             margin-bottom: 20px;
         }
 
@@ -294,27 +303,27 @@
             font-family: 'Cinzel', serif;
             font-size: 1.1rem;
             font-weight: 700;
-            color: #8c855b;
+            color: #6f6642;
             text-transform: capitalize;
         }
 
         .parent-role {
             font-size: 0.75rem;
             font-style: italic;
-            color: #888;
+            color: #6f6f6f;
             margin-bottom: 15px;
         }
 
         .together-text {
             font-size: 0.8rem;
-            color: #555;
+            color: #444;
             margin: 15px 0;
         }
 
         .invitation-body {
             font-size: 0.8rem;
             line-height: 1.6;
-            color: #444;
+            color: #333;
             margin: 25px 0;
         }
 
@@ -322,20 +331,20 @@
             font-family: 'Cinzel', serif;
             font-size: 1.05rem;
             font-weight: 700;
-            color: #8c855b;
+            color: #6f6642;
             line-height: 1.8;
         }
 
         /* SECTION 3: TIME, LOCATION & SURAH */
         .icon-header {
             font-size: 1.8rem;
-            color: #8c855b;
+            color: #6f6642;
             margin-bottom: 10px;
         }
 
         .info-text {
             font-size: 0.85rem;
-            color: #333;
+            color: #222;
             margin-bottom: 25px;
             line-height: 1.5;
         }
@@ -357,17 +366,17 @@
 
         .time-box .number {
             font-size: 1.2rem;
-            color: #8c855b;
+            color: #6f6642;
             font-family: 'Cinzel', serif;
         }
 
         .time-box .label {
             font-size: 0.65rem;
-            color: #777;
+            color: #666;
         }
 
         .colon {
-            color: #8c855b;
+            color: #6f6642;
             font-size: 1rem;
             margin-bottom: 12px;
         }
@@ -383,14 +392,14 @@
             font-size: 0.75rem;
             font-style: italic;
             line-height: 1.6;
-            color: #444;
+            color: #333;
             margin: 15px 0 10px 0;
         }
 
         .quran-surah {
             font-size: 0.8rem;
             font-weight: 600;
-            color: #333;
+            color: #222;
         }
 
         /* SECTION 4: ATUR CARA & RSVP */
@@ -398,78 +407,57 @@
             font-family: 'Cinzel', serif;
             letter-spacing: 2px;
             font-size: 1rem;
-            color: #8c855b;
+            color: #6f6642;
             margin-bottom: 20px;
             text-transform: uppercase;
         }
 
         .sub-date {
             font-size: 0.75rem;
-            color: #777;
+            color: #666;
             margin-bottom: 30px;
         }
 
-        /* TIMELINE */
-        .timeline {
-            position: relative;
-            max-width: 300px;
+        /* ATUR CARA TABLE */
+        .schedule-table {
+            width: 100%;
+            max-width: 340px;
             margin: 0 auto 40px auto;
+            display: grid;
+            gap: 10px;
         }
 
-        .timeline::before {
-            content: '';
-            position: absolute;
-            top: 10px;
-            bottom: 10px;
-            left: 50%;
-            width: 1px;
-            background-color: #ccc;
-            transform: translateX(-50%);
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 25px;
-            display: flex;
+        .schedule-row {
+            display: grid;
+            grid-template-columns: 90px 1fr;
             align-items: center;
+            gap: 10px;
+            padding: 12px 14px;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.82);
+            border: 1px solid rgba(140, 133, 91, 0.2);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+            transition: transform 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
         }
 
-        .timeline-item:nth-child(odd) {
-            justify-content: flex-start;
-            text-align: right;
-            padding-right: 55%;
+        .schedule-row:hover {
+            transform: translateY(-3px) scale(1.01);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.95);
         }
 
-        .timeline-item:nth-child(even) {
-            justify-content: flex-end;
-            text-align: left;
-            padding-left: 55%;
-        }
-
-        .timeline-dot {
-            position: absolute;
-            left: 50%;
-            top: 5px;
-            width: 8px;
-            height: 8px;
-            background-color: #faf9f6;
-            border: 2px solid #8c855b;
-            border-radius: 50%;
-            transform: translateX(-50%);
-            z-index: 1;
-        }
-
-        .time-title {
+        .schedule-time {
             font-family: 'Cinzel', serif;
-            font-size: 0.85rem;
+            font-size: 0.78rem;
             font-weight: 700;
-            color: #8c855b;
+            color: #6f6642;
+            text-align: left;
         }
 
-        .time-desc {
-            font-size: 0.7rem;
-            font-style: italic;
-            color: #555;
+        .schedule-detail {
+            font-size: 0.75rem;
+            color: #444;
+            line-height: 1.5;
         }
 
         /* SECTION 5: GALLERY */
@@ -545,40 +533,67 @@
             width: 36px;
             height: 36px;
             border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.9);
-            border: 1px solid #ccc;
+            background-color: rgba(255, 255, 255, 0.95);
+            border: 1px solid #b8ab84;
             display: flex;
             justify-content: center;
             align-items: center;
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
             cursor: pointer;
-            color: #333;
+            color: #222;
             font-size: 0.85rem;
         }
 
         .action-buttons {
             display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-top: 0px;
-            margin-bottom: 200px;
-            flex-wrap: wrap;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            margin-top: 8px;
+            margin-bottom: 100px;
         }
 
         .action-btn {
-            padding: 10px 16px;
+            width: min(220px, 80%);
+            padding: 12px 18px;
             border: 1px solid #8c855b;
-            border-radius: 25px;
-            background: #fff;
-            color: #8c855b;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #fdfbf7, #efe7d4);
+            color: #6f6642;
             font-family: 'Cinzel', serif;
-            font-size: 1rem;
+            font-size: 0.9rem;
+            font-weight: 600;
             letter-spacing: 1px;
             cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
             transition: all 0.3s ease;
         }
 
         .action-btn:hover {
+            background: #8c855b;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .choice-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        .choice-btn {
+            flex: 1;
+            padding: 10px 12px;
+            border: 1px solid #8c855b;
+            border-radius: 25px;
+            background: #fdfbf7;
+            color: #6f6642;
+            font-family: 'Cinzel', serif;
+            font-size: 0.8rem;
+            cursor: pointer;
+        }
+
+        .choice-btn.active {
             background: #8c855b;
             color: #fff;
         }
@@ -875,48 +890,38 @@
             <div class="section-title reveal">Atur Cara</div>
             <div class="sub-date reveal delay-1">Sabtu, 19 September 2026</div>
 
-            <div class="timeline">
-                <div class="timeline-item reveal delay-1">
-                    <div class="timeline-dot"></div>
-                    <div>
-                        <div class="time-title">11:30 pagi</div>
-                        <div class="time-desc">- Ketibaan Tetamu</div>
-                    </div>
+            <div class="schedule-table">
+                <div class="schedule-row reveal delay-1">
+                    <div class="schedule-time">11:30 pagi</div>
+                    <div class="schedule-detail">Ketibaan Tetamu</div>
                 </div>
 
-                <div class="timeline-item reveal delay-2">
-                    <div class="timeline-dot"></div>
-                    <div>
-                        <div class="time-title">12:30 tengah hari</div>
-                        <div class="time-desc">Ketibaan Pengantin -</div>
-                    </div>
+                <div class="schedule-row reveal delay-2">
+                    <div class="schedule-time">12:30 tengah hari</div>
+                    <div class="schedule-detail">Ketibaan Pengantin</div>
                 </div>
 
-                <div class="timeline-item reveal delay-3">
-                    <div class="timeline-dot"></div>
-                    <div>
-                        <div class="time-title">1:30 tengah hari</div>
-                        <div class="time-desc">- Upacara Pemotongan Kek</div>
-                    </div>
+                <div class="schedule-row reveal delay-3">
+                    <div class="schedule-time">1:30 tengah hari</div>
+                    <div class="schedule-detail">Upacara Pemotongan Kek</div>
                 </div>
 
-                <div class="timeline-item reveal delay-4">
-                    <div class="timeline-dot"></div>
-                    <div>
-                        <div class="time-title">2:00 petang</div>
-                        <div class="time-desc">Sesi Bergambar -</div>
-                    </div>
+                <div class="schedule-row reveal delay-4">
+                    <div class="schedule-time">2:00 petang</div>
+                    <div class="schedule-detail">Sesi Bergambar</div>
                 </div>
 
-                <div class="timeline-item reveal delay-4">
-                    <div class="timeline-dot"></div>
-                    <div>
-                        <div class="time-title">4:00 petang</div>
-                        <div class="time-desc">- Majlis Bersurai</div>
-                    </div>
+                <div class="schedule-row reveal delay-4">
+                    <div class="schedule-time">4:00 petang</div>
+                    <div class="schedule-detail">Majlis Bersurai</div>
                 </div>
             </div>
         </section>
+
+        <div class="action-buttons reveal">
+            <button class="action-btn" onclick="openModal('rsvpModal')">Sahkan Kehadiran</button>
+            <button class="action-btn" onclick="openModal('ucapanModal')">Ucapan</button>
+        </div>
 
         <!-- SECTION 5: GALLERY & GUESTBOOK -->
         <section class="section" style="padding-top: 0;">
@@ -937,28 +942,36 @@
 
         </section>
 
-        <div class="action-buttons reveal">
-            <button class="action-btn" onclick="openModal('rsvpModal')">RSVP</button>
-            <button class="action-btn" onclick="openModal('ucapanModal')">Ucapan</button>
-        </div>
+        
     </div>
 
     <div class="modal-overlay" id="rsvpModal">
         <div class="modal-box">
             <button class="modal-close" onclick="closeModal('rsvpModal')">×</button>
-            <div class="modal-title">RSVP</div>
+            <div class="modal-title">Sahkan Kehadiran</div>
             <form id="rsvpForm">
                 <div class="form-group">
                     <label for="rsvpName">Nama</label>
                     <input id="rsvpName" name="name" type="text" placeholder="Masukkan nama" required>
                 </div>
                 <div class="form-group">
+                    <label>Keputusan</label>
+                    <div class="choice-buttons">
+                        <button type="button" class="choice-btn active" data-choice="hadir">Hadir</button>
+                        <button type="button" class="choice-btn" data-choice="tidak-hadir">Tidak Hadir</button>
+                    </div>
+                </div>
+                <div class="form-group" id="paxGroup">
                     <label for="adultPax">Adult Pax</label>
                     <input id="adultPax" name="adult_pax" type="number" min="0" placeholder="0" value="0">
                 </div>
-                <div class="form-group">
+                <div class="form-group" id="childPaxGroup">
                     <label for="childPax">Child Pax</label>
                     <input id="childPax" name="child_pax" type="number" min="0" placeholder="0" value="0">
+                </div>
+                <div class="form-group">
+                    <label for="rsvpUcapan">Ucapan</label>
+                    <textarea id="rsvpUcapan" name="ucapan" placeholder="Masukkan ucapan (jika ada)"></textarea>
                 </div>
                 <button class="submit-btn" type="submit">Hantar</button>
             </form>
@@ -996,7 +1009,7 @@
         }
 
         const API_BASE_URL = 'https://rsvp.mypkpim.org/api';
-        const API_KEY = '1|ScHaBAUHhLLZduQ7okUOvS516rbWjegxZc5BnCujec0160a1';
+        const API_KEY = '1|7IdBtkhHteTRKVPQBA1IulBqlXY0PMQb2EcSd7b8cce5f15c';
 
         document.querySelectorAll('.modal-overlay').forEach(modal => {
             modal.addEventListener('click', (e) => {
@@ -1034,19 +1047,52 @@
             return data;
         }
 
+        const choiceButtons = document.querySelectorAll('.choice-btn');
+        const paxGroup = document.getElementById('paxGroup');
+        const childPaxGroup = document.getElementById('childPaxGroup');
+        let rsvpChoice = 'hadir';
+
+        choiceButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                choiceButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                rsvpChoice = btn.dataset.choice;
+
+                if (rsvpChoice === 'tidak-hadir') {
+                    paxGroup.style.display = 'none';
+                    childPaxGroup.style.display = 'none';
+                } else {
+                    paxGroup.style.display = 'block';
+                    childPaxGroup.style.display = 'block';
+                }
+            });
+        });
+
         document.getElementById('rsvpForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             const payload = {
                 name: document.getElementById('rsvpName').value.trim(),
-                adult_pax: Number(document.getElementById('adultPax').value || 0),
-                child_pax: Number(document.getElementById('childPax').value || 0)
+                message: document.getElementById('rsvpUcapan').value.trim()
             };
 
             try {
-                await submitForm(`${API_BASE_URL}/reservation`, payload);
+                if (rsvpChoice === 'tidak-hadir') {
+                    await submitForm(`${API_BASE_URL}/tidak-hadir`, payload);
+                    showSuccessToast('Keputusan tidak hadir berjaya dihantar.');
+                } else {
+                    payload.adult_pax = Number(document.getElementById('adultPax').value || 0);
+                    payload.child_pax = Number(document.getElementById('childPax').value || 0);
+                    await submitForm(`${API_BASE_URL}/reservation`, payload);
+                    showSuccessToast('RSVP berjaya dihantar.');
+                }
+
                 closeModal('rsvpModal');
                 e.target.reset();
-                showSuccessToast('RSVP berjaya dihantar.');
+                rsvpChoice = 'hadir';
+                choiceButtons.forEach(b => b.classList.remove('active'));
+                document.querySelector('.choice-btn[data-choice="hadir"]').classList.add('active');
+                paxGroup.style.display = 'block';
+                childPaxGroup.style.display = 'block';
             } catch (error) {
                 alert(error.message || 'RSVP gagal dihantar.');
             }
