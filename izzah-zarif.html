@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WALIMATULURUS IZZAH & ZARIF</title>
+    <title>Walimatulurus Izzah & Zarif</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,18 +31,12 @@
             align-items: center;
             min-height: 100vh;
             overflow: hidden;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
         }
 
-        .reveal-item {
-            opacity: 0;
-            transform: translateY(24px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-            will-change: opacity, transform;
-        }
-
-        .reveal-item.is-visible {
-            opacity: 1;
-            transform: translateY(0);
+        body::-webkit-scrollbar {
+            display: none;
         }
 
         /* CONTAINER CARD (MOBILE VIEW) */
@@ -50,21 +44,147 @@
             width: 100%;
             max-width: 430px;
             height: 100vh;
-            /* Standard Phone Screen Width */
+            max-height: 932px;
+            /* Standard Phone Screen Height */
             background-color: #faf9f6;
             background-image: radial-gradient(#d3c5ad 0.5px, transparent 0.5px);
             background-size: 15px 15px;
             /* Linen Texture Feel */
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            overflow-y: auto;
+            overflow-y: hidden;
             overflow-x: hidden;
             position: relative;
             scrollbar-width: none;
             -ms-overflow-style: none;
         }
 
+        .card-container.unlocked {
+            overflow-y: auto;
+        }
+
         .card-container::-webkit-scrollbar {
             display: none;
+        }
+
+        /* DOOR OVERLAY WRAPPER */
+        .door-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1000;
+            display: flex;
+            perspective: 1000px;
+            pointer-events: auto;
+            transition: visibility 1.2s ease;
+        }
+
+        .door-wrapper.opened {
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .door {
+            width: 50%;
+            height: 100%;
+            background-color: #f4efe6;
+            background-image: radial-gradient(#c7b299 0.5px, transparent 0.5px);
+            background-size: 12px 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease 0.4s;
+            box-shadow: inset 0 0 30px rgba(140, 133, 91, 0.2);
+            z-index: 2;
+        }
+
+        .door-left {
+            left: 0;
+            border-right: 1px solid #d3c5ad;
+            transform-origin: left center;
+        }
+
+        .door-right {
+            right: 0;
+            border-left: 1px solid #d3c5ad;
+            transform-origin: right center;
+        }
+
+        /* OPEN DOOR ANIMATION STATE */
+        .door-wrapper.opened .door-left {
+            transform: rotateY(-110deg);
+            opacity: 0;
+        }
+
+        .door-wrapper.opened .door-right {
+            transform: rotateY(110deg);
+            opacity: 0;
+        }
+
+        /* DOOR CONTENT (CENTERED BADGE) */
+        .door-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 3;
+            text-align: center;
+            width: 80%;
+            background: rgba(250, 249, 246, 0.95);
+            padding: 30px 20px;
+            border: 2px solid #8c855b;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .door-wrapper.opened .door-content {
+            opacity: 0;
+            transform: translate(-50%, -60%) scale(0.9);
+            pointer-events: none;
+        }
+
+        .door-title {
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            color: #8c855b;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .door-couple {
+            font-family: 'Alex Brush', cursive;
+            font-size: 3rem;
+            color: #1a1a1a;
+            margin: 10px 0;
+        }
+
+        .open-btn {
+            margin-top: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            background-color: #8c855b;
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            font-family: 'Cinzel', serif;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(140, 133, 91, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .open-btn:hover {
+            background-color: #6e6846;
+            transform: translateY(-2px);
         }
 
         .section {
@@ -169,7 +289,6 @@
             font-size: 1.1rem;
             font-weight: 700;
             color: #8c855b;
-            /* Muted Gold / Olive */
             text-transform: capitalize;
         }
 
@@ -347,32 +466,6 @@
             color: #555;
         }
 
-        /* RSVP BUTTON */
-        .rsvp-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            width: 80%;
-            padding: 12px;
-            border: 1.5px solid #8c855b;
-            border-radius: 30px;
-            background: transparent;
-            color: #8c855b;
-            font-family: 'Cinzel', serif;
-            font-size: 0.85rem;
-            letter-spacing: 2px;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            margin-top: 15px;
-        }
-
-        .rsvp-btn:hover {
-            background-color: #8c855b;
-            color: #fff;
-        }
-
         /* SECTION 5: GALLERY */
         .gallery-container {
             width: 100%;
@@ -384,16 +477,12 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             margin-bottom: 15px;
             -webkit-overflow-scrolling: touch;
-            /* Smooth scrolling on iOS */
             -ms-overflow-style: none;
-            /* Hide scrollbar Edge/IE */
             scrollbar-width: none;
-            /* Hide scrollbar Firefox */
         }
 
         .gallery-container::-webkit-scrollbar {
             display: none;
-            /* Hide scrollbar Chrome/Safari */
         }
 
         .gallery-container img {
@@ -429,32 +518,11 @@
             border-radius: 10px;
         }
 
-        .dots {
-            display: flex;
-            justify-content: center;
-            gap: 6px;
-            margin-bottom: 30px;
-        }
-
-        .dot {
-            width: 6px;
-            height: 6px;
-            background-color: #ccc;
-            border-radius: 50%;
-        }
-
-        .dot.active {
-            width: 20px;
-            background-color: #333;
-            border-radius: 10px;
-        }
-
         /* FLOATING ACTION BUTTONS */
         .floating-controls {
             position: fixed;
             bottom: 20px;
             right: calc(50% - 200px + 10px);
-            /* Aligns to mobile container right side */
             display: flex;
             flex-direction: column;
             gap: 10px;
@@ -481,25 +549,73 @@
             color: #333;
             font-size: 0.85rem;
         }
+
+        /* ANIMATION CLASSES */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            will-change: opacity, transform;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-1 { transition-delay: 0.15s; }
+        .delay-2 { transition-delay: 0.3s; }
+        .delay-3 { transition-delay: 0.45s; }
+        .delay-4 { transition-delay: 0.6s; }
+
+        @keyframes fadeInHero {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-animate {
+            animation: fadeInHero 1.2s ease-out forwards;
+        }
+
+        .hero-delay-1 { animation-delay: 0.3s; opacity: 0; }
+        .hero-delay-2 { animation-delay: 0.6s; opacity: 0; }
+        .hero-delay-3 { animation-delay: 0.9s; opacity: 0; }
     </style>
 </head>
 
 <body>
 
-    <div class="card-container">
+    <div class="card-container" id="cardContainer">
+
+        <!-- DOOR COVER OVERLAY -->
+        <div class="door-wrapper" id="doorWrapper">
+            <div class="door door-left"></div>
+            <div class="door door-right"></div>
+            <div class="door-content">
+                <div class="door-title">Walimatulurus</div>
+                <div class="door-couple">Izzah & Zarif</div>
+                <div style="font-size: 0.75rem; color: #666; margin-top: 5px;">Sabtu, 19 September 2026</div>
+                <button class="open-btn" onclick="openCard()">
+                    <i class="fa-envelope-open-text fa-solid"></i> Buka Jemputan
+                </button>
+            </div>
+        </div>
 
         <!-- FLOATING BUTTONS (MUSIC & CLICK ICON) -->
         <div class="floating-controls">
-            <!-- <button class="float-btn" onclick="alert('Sentuh untuk interaksi!')">
-                <i class="fa-regular fa-hand-pointer"></i>
-            </button> -->
             <button class="float-btn" id="musicToggle">
                 <i class="fa-solid fa-music"></i>
             </button>
         </div>
 
         <!-- AUDIO PLAYER (HIDDEN) -->
-        <audio id="bgMusic" loop autoplay preload="auto">
+        <audio id="bgMusic" loop preload="auto">
             <source src="PAYUNG TEDUH.wav" type="audio/wav">
         </audio>
 
@@ -507,46 +623,46 @@
         <section class="section hero-section">
             <div class="arch-frame"></div>
 
-            <div class="monogram reveal-item">
+            <div class="monogram hero-animate">
                 I<span>&</span>Z
             </div>
 
             <div>
-                <div class="tagline reveal-item">Satu Akad, Seumur Hidup</div>
-                <div class="couple-names-hero reveal-item">Izzah & Zarif</div>
-                <div class="date-hero reveal-item">Sabtu, 19 Sep 2026</div>
-                <div class="hijri-hero reveal-item">7 Rabiulakhir 1448</div>
+                <div class="tagline hero-animate hero-delay-1">Satu Akad, Seumur Hidup</div>
+                <div class="couple-names-hero hero-animate hero-delay-2">Izzah & Zarif</div>
+                <div class="date-hero hero-animate hero-delay-3">Sabtu, 19 Sep 2026</div>
+                <div class="hijri-hero hero-animate hero-delay-3">7 Rabiulakhir 1448</div>
             </div>
         </section>
 
         <!-- SECTION 2: INVITATION DETAILS -->
         <section class="section">
-            <div class="bismillah">بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+            <div class="bismillah reveal">بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
 
-            <p class="intro-text">Dengan penuh kesyukuran, kami</p>
+            <p class="intro-text reveal delay-1">Dengan penuh kesyukuran, kami</p>
 
-            <div class="parent-name">Mohammad Redzuan Bin Othman</div>
-            <div class="parent-role">Ayah Pengantin Perempuan</div>
+            <div class="parent-name reveal delay-1">Mohammad Redzuan Bin Othman</div>
+            <div class="parent-role reveal delay-1">Ayah Pengantin Perempuan</div>
 
-            <p class="together-text">bersama</p>
+            <p class="together-text reveal delay-2">bersama</p>
 
-            <div class="parent-name">Suraiya Binti Abdul Wahab</div>
-            <div class="parent-role">Ibu Pengantin Perempuan</div>
+            <div class="parent-name reveal delay-2">Suraiya Binti Abdul Wahab</div>
+            <div class="parent-role reveal delay-2">Ibu Pengantin Perempuan</div>
 
-            <p class="invitation-body">
+            <p class="invitation-body reveal delay-3">
                 Menjemput Yang Berbahagia Tan Sri/ Puan Sri/ Dato' Seri/<br>
                 Datin Seri/ Dato'/ Datin/ Prof/ Tuan/ Puan/ Encik/ Cik<br>
                 suami/ isteri/ pasangan serta keluarga untuk meraikan majlis<br>
                 perkahwinan anakanda kami
             </p>
 
-            <div class="bride-groom-names">
+            <div class="bride-groom-names reveal delay-4">
                 Izzah Farhana Binti Mohammad Redzuan<br>
                 &<br>
                 Zarif Fathurrahman Bin Che Abd Rani
             </div>
 
-            <div style="margin-top: 30px;">
+            <div style="margin-top: 30px;" class="reveal">
                 <i class="fa-regular fa-calendar-check icon-header" style="font-size: 1.5rem;"></i>
                 <div class="date-hero" style="font-size: 0.85rem;">Sabtu, 19 September 2026</div>
                 <div class="hijri-hero">7 Rabiulakhir 1448</div>
@@ -556,19 +672,23 @@
         <!-- SECTION 3: TIME, VENUE & COUNTDOWN -->
         <section class="section" style="padding-top: 0;">
             <!-- TIME -->
-            <i class="fa-regular fa-clock icon-header"></i>
-            <div class="info-text">11:30 pagi – 4:00 petang</div>
+            <div class="reveal">
+                <i class="fa-regular fa-clock icon-header"></i>
+                <div class="info-text">11:30 pagi – 4:00 petang</div>
+            </div>
 
             <!-- VENUE -->
-            <i class="fa-solid fa-house-chimney icon-header"></i>
-            <div class="info-text">
-                <strong>Bangi Convention Centre</strong><br>
-                Jalan Wawasan 1, Seksyen 14, 43650 Bandar Baru Bangi,<br>
-                Selangor
+            <div class="reveal delay-1">
+                <i class="fa-solid fa-house-chimney icon-header"></i>
+                <div class="info-text">
+                    <strong>Bangi Convention Centre</strong><br>
+                    Jalan Wawasan 1, Seksyen 14, 43650 Bandar Baru Bangi,<br>
+                    Selangor
+                </div>
             </div>
 
             <!-- COUNTDOWN TIMER -->
-            <div class="countdown-container" id="countdown">
+            <div class="countdown-container reveal delay-2" id="countdown">
                 <div class="time-box">
                     <span class="number" id="days">00</span>
                     <span class="label">Hari</span>
@@ -591,7 +711,7 @@
             </div>
 
             <!-- QURAN VERSE -->
-            <div class="quran-box">
+            <div class="quran-box reveal delay-3">
                 <div class="bismillah" style="font-size: 1.4rem; margin-bottom: 10px;">رَبَّنَا هَبْ لَنَا مِنْ
                     أَزْوَاجِنَا وَذُرِّيَّاتِنَا قُرَّةَ أَعْيُنٍ وَاجْعَلْنَا لِلْمُتَّقِينَ إِمَامًا</div>
                 <p class="quran-translation">
@@ -604,11 +724,11 @@
 
         <!-- SECTION 4: TIMELINE & RSVP -->
         <section class="section">
-            <div class="section-title">Atur Cara</div>
-            <div class="sub-date">Sabtu, 19 September 2026</div>
+            <div class="section-title reveal">Atur Cara</div>
+            <div class="sub-date reveal delay-1">Sabtu, 19 September 2026</div>
 
             <div class="timeline">
-                <div class="timeline-item">
+                <div class="timeline-item reveal delay-1">
                     <div class="timeline-dot"></div>
                     <div>
                         <div class="time-title">11:30 pagi</div>
@@ -616,7 +736,7 @@
                     </div>
                 </div>
 
-                <div class="timeline-item">
+                <div class="timeline-item reveal delay-2">
                     <div class="timeline-dot"></div>
                     <div>
                         <div class="time-title">12:30 tengah hari</div>
@@ -624,7 +744,7 @@
                     </div>
                 </div>
 
-                <div class="timeline-item">
+                <div class="timeline-item reveal delay-3">
                     <div class="timeline-dot"></div>
                     <div>
                         <div class="time-title">1:30 tengah hari</div>
@@ -632,7 +752,7 @@
                     </div>
                 </div>
 
-                <div class="timeline-item">
+                <div class="timeline-item reveal delay-4">
                     <div class="timeline-dot"></div>
                     <div>
                         <div class="time-title">2:00 petang</div>
@@ -640,7 +760,7 @@
                     </div>
                 </div>
 
-                <div class="timeline-item">
+                <div class="timeline-item reveal delay-4">
                     <div class="timeline-dot"></div>
                     <div>
                         <div class="time-title">4:00 petang</div>
@@ -648,35 +768,19 @@
                     </div>
                 </div>
             </div>
-
-            <!-- RSVP SECTION -->
-            <!-- <div style="margin-top: 40px;">
-                <div class="section-title" style="font-size: 0.9rem;">Maklumat Kehadiran</div>
-                <p class="intro-text" style="font-size: 0.75rem; padding: 0 10px;">
-                    Sila maklumkan kehadiran yang telah ditetapkan melalui butang RSVP dibawah sebelum 01 September 2026.
-                </p>
-                <a href="#rsvp" class="rsvp-btn">
-                    <i class="fa-regular fa-envelope"></i> RSVP
-                </a>
-            </div> -->
         </section>
 
         <!-- SECTION 5: GALLERY & GUESTBOOK -->
         <section class="section" style="padding-top: 0;">
-            <div class="gallery-container" id="galleryContainer">
-                <!-- Add your images here -->
-                <img src="A1.webp"
-                    alt="Gambar 1">
-                <img src="A2.webp"
-                    alt="Gambar 2">
-                <img src="A3.webp"
-                    alt="Gambar 3">
-                <img src="A4.webp"
-                    alt="Gambar 4">
+            <div class="gallery-container reveal" id="galleryContainer">
+                <img src="A1.webp" alt="Gambar 1">
+                <img src="A2.webp" alt="Gambar 2">
+                <img src="A3.webp" alt="Gambar 3">
+                <img src="A4.webp" alt="Gambar 4">
             </div>
 
             <!-- Clickable Dots -->
-            <div class="dots" id="galleryDots">
+            <div class="dots reveal delay-1" id="galleryDots">
                 <div class="dot active" onclick="goToSlide(0)"></div>
                 <div class="dot" onclick="goToSlide(1)"></div>
                 <div class="dot" onclick="goToSlide(2)"></div>
@@ -689,7 +793,38 @@
 
     <!-- JAVASCRIPT LOGIC -->
     <script>
-        // 1. COUNTDOWN TIMER LOGIC (Target: 19 September 2026, 11:30 AM)
+        // OPEN DOOR FUNCTIONALITY
+        function openCard() {
+            const doorWrapper = document.getElementById("doorWrapper");
+            const cardContainer = document.getElementById("cardContainer");
+            
+            doorWrapper.classList.add("opened");
+            cardContainer.classList.add("unlocked");
+            
+            // Auto play music when opening door
+            playAudio();
+        }
+
+        // SCROLL REVEAL ANIMATION LOGIC
+        const cardContainer = document.getElementById('cardContainer');
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const observerOptions = {
+            root: cardContainer,
+            threshold: 0.15
+        };
+
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // 1. COUNTDOWN TIMER LOGIC
         const targetDate = new Date("September 19, 2026 11:30:00").getTime();
 
         function updateCountdown() {
@@ -714,71 +849,25 @@
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
-        // 2. TEXT REVEAL ANIMATIONS ON SCROLL
-        function setupRevealAnimations() {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, {
-                threshold: 0.15
-            });
-
-            document.querySelectorAll('.section, .bismillah, .intro-text, .parent-name, .parent-role, .together-text, .invitation-body, .bride-groom-names, .icon-header, .info-text, .countdown-container, .quran-box, .quran-translation, .quran-surah, .section-title, .sub-date, .timeline-item, .time-title, .time-desc, .gallery-container, .dots, .monogram, .tagline, .couple-names-hero, .date-hero, .hijri-hero').forEach((element, index) => {
-                element.classList.add('reveal-item');
-                element.style.transitionDelay = `${Math.min(index * 0.05, 0.6)}s`;
-                observer.observe(element);
-            });
-        }
-
-        // 3. AUDIO PLAYER TOGGLE
+        // 2. AUDIO PLAYER TOGGLE
         const musicToggleBtn = document.getElementById("musicToggle");
         const bgMusic = document.getElementById("bgMusic");
         let isPlaying = false;
 
-        // Function to handle playing audio
         function playAudio() {
             bgMusic.play().then(() => {
                 isPlaying = true;
                 if (musicToggleBtn) musicToggleBtn.style.opacity = "1.0";
             }).catch(error => {
-                console.log("Autoplay blocked by browser. Trying again after a short delay.");
+                console.log("Autoplay blocked by browser. User interaction needed.");
                 isPlaying = false;
                 if (musicToggleBtn) musicToggleBtn.style.opacity = "0.6";
-                setTimeout(playAudio, 500);
             });
         }
 
-        // Try autoplay on page load
-        window.addEventListener("DOMContentLoaded", () => {
-            playAudio();
-            setupRevealAnimations();
-        });
-
-        // Keep the page responsive if the browser later allows playback
-        document.addEventListener("click", () => {
-            if (!isPlaying) {
-                playAudio();
-            }
-        });
-        document.addEventListener("touchstart", () => {
-            if (!isPlaying) {
-                playAudio();
-            }
-        });
-        document.addEventListener("scroll", () => {
-            if (!isPlaying) {
-                playAudio();
-            }
-        });
-
-        // Floating Music Button Toggle Switch
         if (musicToggleBtn) {
             musicToggleBtn.addEventListener("click", (e) => {
-                e.stopPropagation(); // Prevents triggering global click listener
+                e.stopPropagation();
                 if (isPlaying) {
                     bgMusic.pause();
                     musicToggleBtn.style.opacity = "0.6";
@@ -789,13 +878,11 @@
             });
         }
 
-        // 4. GALLERY SLIDER LOGIC
-        // GALLERY SLIDE LOGIC
+        // 3. GALLERY SLIDER LOGIC
         const gallery = document.getElementById("galleryContainer");
         const dots = document.querySelectorAll("#galleryDots .dot");
         let currentSlide = 0;
 
-        // Update active dot indicator on scroll/swipe
         function updateDots() {
             const slideWidth = gallery.clientWidth;
             const activeIndex = Math.round(gallery.scrollLeft / slideWidth);
@@ -804,7 +891,6 @@
             });
         }
 
-        // Jump to specific slide when clicking a dot
         function goToSlide(index) {
             currentSlide = index;
             gallery.scrollTo({
@@ -813,17 +899,12 @@
             });
         }
 
-        // Sync dots when user manually swipes
         gallery.addEventListener("scroll", updateDots);
 
-        // Auto slide every 3.5 seconds
         setInterval(() => {
             currentSlide = (currentSlide + 1) % dots.length;
             goToSlide(currentSlide);
         }, 3500);
-
-
-
     </script>
 </body>
 
