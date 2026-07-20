@@ -789,21 +789,41 @@
             cardContainer.classList.add("unlocked");
 
             setTimeout(() => {
-                startRevealAnimations();
+                startHeroAnimation();
             }, 700);
 
             // Auto play music when opening door
             playAudio();
         }
 
-        // REVEAL ANIMATION LOGIC
-        function startRevealAnimations() {
-            document.querySelectorAll('.reveal, .hero-animate').forEach((element, index) => {
+        // HERO ANIMATION AFTER DOOR OPEN
+        function startHeroAnimation() {
+            document.querySelectorAll('.hero-animate').forEach((element, index) => {
                 setTimeout(() => {
                     element.classList.add('active');
                 }, index * 120);
             });
         }
+
+        // REVEAL ANIMATION FOR LOWER CONTENT ON SCROLL
+        const cardContainer = document.getElementById('cardContainer');
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const observerOptions = {
+            root: cardContainer,
+            threshold: 0.15
+        };
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        revealElements.forEach(el => revealObserver.observe(el));
 
         // 1. COUNTDOWN TIMER LOGIC
         const targetDate = new Date("September 19, 2026 11:30:00").getTime();
