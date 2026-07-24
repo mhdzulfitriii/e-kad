@@ -874,9 +874,9 @@
             </p>
 
             <div class="bride-groom-names reveal delay-4">
-                Izzah Farhana Binti <br /> <span style="font-weight: normal; font-size: 0.9rem;">Mohammad Redzuan</span><br>
+                Izzah Farhana Binti <br /> Mohammad Redzuan<br>
                 &<br>
-                Zarif Fathurrahman Bin <br /> <span style="font-weight: normal; font-size: 0.9rem;">Che Abd Rani</span>
+                Zarif Fathurrahman Bin <br /> Che Abd Rani
             </div>
 
             <div style="margin-top: 30px;" class="reveal">
@@ -1180,6 +1180,53 @@
             }
         });
 
+        // ==========================================
+        // AUTOMATIC SLOW CONTINUOUS SCROLLING ENGINE
+        // ==========================================
+        let autoScrollAnimationId = null;
+        let isUserInteracting = false;
+        let resumeTimeout = null;
+
+        // Increase to scroll faster, decrease (e.g., 0.3) for slower
+        const scrollSpeed = 0.5; 
+
+        function startAutoScroll(container) {
+            function step() {
+                if (!isUserInteracting) {
+                    const maxScroll = container.scrollHeight - container.clientHeight;
+
+                    // If reached the bottom, pause briefly and reset to top
+                    if (container.scrollTop >= maxScroll - 1) {
+                        isUserInteracting = true;
+                        setTimeout(() => {
+                            container.scrollTop = 0;
+                            // Wait 3 seconds at the top again before restarting continuous scroll
+                            setTimeout(() => {
+                                isUserInteracting = false;
+                                autoScrollAnimationId = requestAnimationFrame(step);
+                            }, 3000);
+                        }, 2000); // Wait 2 seconds at the bottom before resetting
+                        return;
+                    }
+
+                    container.scrollTop += scrollSpeed;
+                }
+                autoScrollAnimationId = requestAnimationFrame(step);
+            }
+
+            if (autoScrollAnimationId) cancelAnimationFrame(autoScrollAnimationId);
+            autoScrollAnimationId = requestAnimationFrame(step);
+        }
+
+        function pauseAutoScrollTemporarily() {
+            isUserInteracting = true;
+            clearTimeout(resumeTimeout);
+            // Resumes auto-scroll after 4 seconds of inactivity
+            resumeTimeout = setTimeout(() => {
+                isUserInteracting = false;
+            }, 4000);
+        }
+
         // OPEN DOOR FUNCTIONALITY
         function openCard() {
             const doorWrapper = document.getElementById("doorWrapper");
@@ -1191,6 +1238,16 @@
             setTimeout(() => {
                 startHeroAnimation();
             }, 700);
+
+            // Wait 3 seconds (3000ms) after door animation finishes before starting scroll
+            setTimeout(() => {
+                startAutoScroll(cardContainer);
+            }, 3000);
+
+            // Pause auto-scroll on manual touch/mouse interaction
+            ['touchstart', 'wheel', 'mousedown'].forEach(evt => {
+                cardContainer.addEventListener(evt, pauseAutoScrollTemporarily, { passive: true });
+            });
 
             // Auto play music when opening door
             playAudio();
